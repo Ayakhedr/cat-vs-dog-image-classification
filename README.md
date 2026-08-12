@@ -1,100 +1,209 @@
-# Cat vs. Dog Image Classification with PyTorch CNN
+# Cat vs Dog Image Classification using PyTorch CNN
 
-## Project Overview
+## Overview
 
-This project implements an end-to-end **binary image classification pipeline** using a custom **Convolutional Neural Network (CNN)** built with PyTorch.
+This project focuses on building a **Convolutional Neural Network (CNN) from scratch using PyTorch** to classify images into two categories:
 
-The model is trained to classify images into two categories: **Cats** and **Dogs**.
+- Cat
+- Dog
 
-The notebook covers the complete workflow, from dataset exploration and image preprocessing to model training, evaluation, and final inference.
+The project demonstrates a complete deep learning workflow, including data loading, visualization, custom dataset creation, CNN architecture design, model training, evaluation, and prediction.
 
-## Objective
+---
 
-The main objective is to build and evaluate a custom CNN capable of accurately distinguishing between cat and dog images while demonstrating the key stages of a practical deep learning image classification workflow.
+## Project Highlights
 
-## Project Workflow
+- Building a CNN model from scratch using PyTorch
+- Implementing a custom Dataset class
+- Using DataLoader for efficient batch processing
+- Image preprocessing and normalization
+- Training and validation monitoring
+- Learning rate scheduling
+- Early stopping to reduce overfitting
+- Evaluation using accuracy and confusion matrix
+- Visualizing model predictions on test images
 
-The project follows the following pipeline:
+---
 
-1. Dataset exploration and visualization
-2. Class distribution analysis
-3. Image preprocessing and normalization
-4. Custom PyTorch Dataset implementation
-5. DataLoader preparation
-6. CNN architecture design
-7. Model training
-8. Learning-rate scheduling
-9. Early stopping
-10. Best model checkpointing
-11. Training and validation performance visualization
-12. Model evaluation
-13. Classification report
-14. Confusion matrix analysis
-15. Test-set inference and predictions
+## Dataset
 
-## Model
+The dataset contains two classes:
 
-A custom **Convolutional Neural Network (CNN)** was implemented from scratch using PyTorch.
+- Cats
+- Dogs
 
-The training pipeline includes:
+The images were loaded, explored, and visualized before training to understand the dataset distribution and image samples.
 
-- Cross-Entropy Loss
-- Optimizer
-- ReduceLROnPlateau learning-rate scheduler
-- Early Stopping
-- Best Model Checkpointing
+---
 
-The best-performing model was saved during training and later loaded for evaluation and inference.
+## Methodology
 
-## Results
+The project follows a complete computer vision pipeline:
 
-The final evaluation produced the following results:
-
-| Metric | Score |
-|---|---:|
-| Accuracy | **99.34%** |
-| Precision | **99.28%** |
-| Recall | **99.40%** |
-| F1-Score | **99.34%** |
-
-### Best Validation Performance
-
-- **Best Validation Accuracy:** 99.64%
-- **Best Validation Loss:** 0.0141
-- **Best Epoch:** 14
-
-The confusion matrix shows that the model correctly classified **7,947 out of 8,000 validation images**, with **53 misclassified images**.
-
-```text
-[[3971   29]
- [  24 3976]]
+```
+Input Images
+      |
+      |
+Image Preprocessing
+      |
+      |
+Custom PyTorch Dataset
+      |
+      |
+DataLoader
+      |
+      |
+Custom CNN Architecture
+      |
+      |
+Training & Validation
+      |
+      |
+Evaluation & Prediction
 ```
 
-## Training Performance
+---
 
-The training process was monitored using:
+## Data Preprocessing
 
-- Training Loss
-- Validation Loss
-- Training Accuracy
-- Validation Accuracy
+The preprocessing pipeline includes:
 
-Early stopping was used to prevent unnecessary training once the validation performance stopped improving.
+- Resizing images to a fixed size
+- Converting images into tensors
+- Normalizing image values
 
-## Model Evaluation
+The training pipeline was prepared using PyTorch transforms.
 
-The model was evaluated using multiple classification metrics rather than relying on accuracy alone.
+---
 
-The evaluation includes:
+## Custom Dataset
 
-- Accuracy
-- Precision
-- Recall
-- F1-Score
-- Classification Report
-- Confusion Matrix
+A custom PyTorch Dataset class was implemented to:
 
-## Technologies
+- Load image paths
+- Apply transformations
+- Return images with their corresponding labels
+
+This creates a flexible and reusable data pipeline.
+
+---
+
+## CNN Architecture
+
+A custom CNN model was built from scratch using PyTorch.
+
+The architecture consists of:
+
+- Multiple convolutional layers for feature extraction
+- Activation functions
+- Pooling layers
+- Fully connected layers for classification
+
+Architecture overview:
+
+```
+Input Image
+     |
+Conv2D Layer
+     |
+Activation Function
+     |
+Pooling Layer
+     |
+Conv2D Layers
+     |
+Pooling
+     |
+Fully Connected Layers
+     |
+Cat / Dog Prediction
+```
+
+---
+
+## Training Strategy
+
+The model was trained using:
+
+- PyTorch
+- Adam optimizer
+- Cross Entropy Loss
+- Learning rate scheduler
+- Early stopping
+
+Training performance was monitored using:
+
+- Training loss
+- Validation loss
+- Training accuracy
+- Validation accuracy
+
+---
+
+## Evaluation
+
+The model was evaluated using:
+
+- Validation accuracy
+- Confusion matrix
+- Test predictions visualization
+
+The confusion matrix was used to analyze classification performance and identify prediction errors.
+
+---
+
+**Custom CNN built from scratch using PyTorch**
+
+## Repository Structure
+
+```
+Cat-Dog-PyTorch-CNN/
+
+│
+├── cat-vs-dog-image-classification-with-pytorch-cnn.ipynb
+│
+├── README.md
+│
+└── requirements.txt
+```
+
+---
+
+## How to Run
+
+### Clone the repository
+
+```bash
+git clone https://github.com/your_username/your_repository.git
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run the notebook
+
+Open:
+
+```
+cat-vs-dog-image-classification-with-pytorch-cnn.ipynb
+```
+
+and run the cells sequentially.
+
+---
+
+## Model Weights
+
+The trained CNN model weights are not included in this repository because the file size exceeds GitHub upload limitations.
+
+The complete training pipeline is available in the notebook, and the model can be reproduced by running the training process.
+
+---
+
+## Technologies Used
 
 - Python
 - PyTorch
@@ -103,61 +212,22 @@ The evaluation includes:
 - Pandas
 - Matplotlib
 - Scikit-learn
-- Pillow
+- PIL
 
-## Project Structure
+---
 
-```text
-cat-vs-dog-image-classification/
-│
-├── README.md
-├── requirements.txt
-│
-├── notebooks/
-│   └── cat-vs-dog-image-classification-with-pytorch-cnn.ipynb
-│
-└── models/
-    └── best_model.pth
-```
+## Future Improvements
 
-## How to Run
+Possible improvements include:
 
-### 1. Clone the repository
+- Adding stronger data augmentation techniques
+- Using transfer learning with pretrained models such as ResNet or DenseNet
+- Hyperparameter optimization
+- Deploying the model using an API
+- Optimizing inference speed
 
-```bash
-git clone https://github.com/Ayakhedr/cat-vs-dog-image-classification.git
-cd cat-vs-dog-image-classification
-```
+---
 
-### 2. Install the required dependencies
+## Disclaimer
 
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Open the notebook
-
-Open the following notebook:
-
-```text
-notebooks/cat-vs-dog-image-classification-with-pytorch-cnn.ipynb
-```
-
-Run the notebook cells sequentially to reproduce the workflow.
-
-## Key Takeaways
-
-This project demonstrates practical experience with:
-
-- Deep Learning
-- Convolutional Neural Networks
-- PyTorch
-- Image preprocessing
-- Custom Dataset and DataLoader
-- Model training
-- Learning-rate scheduling
-- Early stopping
-- Model checkpointing
-- Classification metrics
-- Confusion matrix analysis
-- Model evaluation and inference
+This project is developed for educational purposes to demonstrate deep learning and computer vision techniques.
